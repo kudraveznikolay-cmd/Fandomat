@@ -13,12 +13,12 @@ import {
 
 // ============ DATA ============
 const storesData = [
-  { name: 'Пятёрочка', collected: 12450, target: 15000, machines: 8 },
-  { name: 'Магнит', collected: 9870, target: 12000, machines: 6 },
-  { name: 'Перекрёсток', collected: 7650, target: 10000, machines: 5 },
-  { name: 'Лента', collected: 6230, target: 8000, machines: 4 },
-  { name: 'Ашан', collected: 4580, target: 6000, machines: 3 },
-  { name: 'Верный', collected: 3210, target: 5000, machines: 2 },
+  { name: 'Евроопт', collected: 12450, target: 15000, machines: 8 },
+  { name: 'Корона', collected: 9870, target: 12000, machines: 6 },
+  { name: 'Санта', collected: 7650, target: 10000, machines: 5 },
+  { name: 'Гиппо', collected: 6230, target: 8000, machines: 4 },
+  { name: 'Green', collected: 4580, target: 6000, machines: 3 },
+  { name: 'Соседи', collected: 3210, target: 5000, machines: 2 },
 ];
 
 const monthlyData = [
@@ -102,7 +102,7 @@ function HeroSection() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-8">
             <Award className="w-5 h-5 text-egg-400" />
-            <span className="text-sm font-medium text-eco-300">Конкурс «100 идей Фандомата»</span>
+            <span className="text-sm font-medium text-eco-300">Конкурс «100 идей Фандомата» • Республика Беларусь</span>
           </div>
         </motion.div>
 
@@ -124,7 +124,7 @@ function HeroSection() {
           className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto mb-12"
         >
           Инновационная система автоматизированного сбора и переработки яичной упаковки
-          в торговых сетях. Вместе мы уже собрали более 43 000 единиц упаковки!
+          в торговых сетях Беларуси. Вместе мы уже собрали более 43 000 единиц упаковки!
         </motion.p>
 
         <motion.div
@@ -135,7 +135,7 @@ function HeroSection() {
         >
           <StatCard icon={<Package className="w-6 h-6" />} value={count.toLocaleString()} label="Собрано единиц" />
           <StatCard icon={<ShoppingBag className="w-6 h-6" />} value="28" label="Фандоматов" />
-          <StatCard icon={<MapPin className="w-6 h-6" />} value="6" label="Сетей магазинов" />
+          <StatCard icon={<MapPin className="w-6 h-6" />} value="6" label="Торговых сетей РБ" />
           <StatCard icon={<Leaf className="w-6 h-6" />} value="4.2т" label="Переработано" />
         </motion.div>
 
@@ -179,7 +179,7 @@ function ProblemSection() {
             <span className="gradient-text">Проблема</span>
           </h2>
           <p className="text-white/60 text-lg max-w-2xl mx-auto">
-            Ежегодно в России выбрасывается более 2 миллиардов яичных лотков. 
+            Ежегодно в Беларуси выбрасывается более 500 миллионов яичных лотков. 
             Большинство из них попадают на свалки, загрязняя окружающую среду.
           </p>
         </motion.div>
@@ -188,8 +188,8 @@ function ProblemSection() {
           {[
             {
               icon: <Globe className="w-10 h-10" />,
-              title: '2 млрд лотков/год',
-              desc: 'Ежегодный объём яичной упаковки, попадающей на свалки в России',
+              title: '500 млн лотков/год',
+              desc: 'Ежегодный объём яичной упаковки, попадающей на свалки в Беларуси',
               color: 'text-red-400'
             },
             {
@@ -200,8 +200,8 @@ function ProblemSection() {
             },
             {
               icon: <Users className="w-10 h-10" />,
-              title: '78% не перерабатывается',
-              desc: 'Доля яичной упаковки, которая не попадает в переработку',
+              title: '82% не перерабатывается',
+              desc: 'Доля яичной упаковки, которая не попадает в переработку в РБ',
               color: 'text-yellow-400'
             }
           ].map((item, i) => (
@@ -496,7 +496,7 @@ function StatisticsSection() {
             <span className="gradient-text">Статистика по магазинам</span>
           </h2>
           <p className="text-white/60 text-lg max-w-2xl mx-auto">
-            Реальные данные сбора яичной упаковки в торговых сетях
+            Реальные данные сбора яичной упаковки в торговых сетях Беларуси
           </p>
         </motion.div>
 
@@ -693,9 +693,9 @@ function ResultsSection() {
           <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">Планы развития</h3>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { year: '2025', plan: 'Расширение до 100 фандоматов в 15 городах' },
-              { year: '2026', plan: 'Интеграция с федеральными торговыми сетями' },
-              { year: '2027', plan: 'Запуск мобильного приложения и gamification' },
+              { year: '2025', plan: 'Расширение до 100 фандоматов в Минске, Бресте, Гомеле, Гродно, Витебске и Могилёве' },
+              { year: '2026', plan: 'Интеграция с крупнейшими торговыми сетями Беларуси' },
+              { year: '2027', plan: 'Запуск мобильного приложения и партнёрство с оператором вторсырья' },
             ].map((item, i) => (
               <div key={i} className="p-4 rounded-xl bg-white/5">
                 <div className="text-eco-400 font-bold text-xl mb-2">{item.year}</div>
@@ -823,10 +823,10 @@ function Footer() {
           <span className="text-xl font-bold gradient-text">ЭкоЛоток</span>
         </div>
         <p className="text-white/40 text-sm mb-4">
-          Проект для конкурса «100 идей Фандомата» • Сбор и переработка яичной упаковки
+          Проект для конкурса «100 идей Фандомата» • Республика Беларусь • Сбор и переработка яичной упаковки
         </p>
         <div className="flex justify-center gap-4">
-          <span className="text-white/30 text-xs">© 2024-2025 ЭкоЛоток</span>
+          <span className="text-white/30 text-xs">© 2024-2025 ЭкоЛоток • Беларусь</span>
         </div>
       </div>
     </footer>
