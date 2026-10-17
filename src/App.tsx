@@ -337,7 +337,7 @@ function MechanismSection() {
 }
 
 function TrayDemoSection() {
-  const [traySlots, setTraySlots] = useState<boolean[]>(Array(12).fill(false));
+  const [traySlots, setTraySlots] = useState<boolean[]>(Array(10).fill(false));
   const [isProcessing, setIsProcessing] = useState(false);
   const [processedCount, setProcessedCount] = useState(0);
 
@@ -346,14 +346,14 @@ function TrayDemoSection() {
     const newSlots = [...traySlots];
     let idx = 0;
     const interval = setInterval(() => {
-      if (idx < 12) {
+      if (idx < 10) {
         newSlots[idx] = true;
         setTraySlots([...newSlots]);
         idx++;
       } else {
         clearInterval(interval);
         setTimeout(() => {
-          setTraySlots(Array(12).fill(false));
+          setTraySlots(Array(10).fill(false));
           setProcessedCount(prev => prev + 1);
           setIsProcessing(false);
         }, 1000);
@@ -387,8 +387,8 @@ function TrayDemoSection() {
             viewport={{ once: true }}
             className="glass-card rounded-3xl p-8"
           >
-            <h3 className="text-xl font-bold text-white mb-6 text-center">Яичный лоток (12 яиц)</h3>
-            <div className="grid grid-cols-4 gap-3 mb-8">
+            <h3 className="text-xl font-bold text-white mb-6 text-center">Яичный лоток (10 яиц)</h3>
+            <div className="grid grid-cols-5 gap-3 mb-8">
               {traySlots.map((filled, i) => (
                 <motion.div
                   key={i}
