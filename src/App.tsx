@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   Leaf, Recycle, BarChart3, MapPin, TrendingUp, Award,
   ShoppingBag, Package, ChevronDown, Star,
@@ -61,38 +61,9 @@ function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image */}
-      <div className="absolute inset-0">
-        <img
-          src="https://image.qwenlm.ai/generated-images/b3cc0c17-30dd-48a7-b1e3-14bbfbf13977/_result.png"
-          alt="Фандомат для сбора яичной упаковки"
-          className="w-full h-full object-cover opacity-20"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1a]/80 via-[#0a0f1a]/60 to-[#0a0f1a]" />
-      </div>
       {/* Background effects */}
       <div className="absolute inset-0 hero-gradient" />
-      <div className="absolute inset-0">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-eco-400/20 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              opacity: [0.2, 0.8, 0.2],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
-      </div>
+      <div className="absolute inset-0 bg-gradient-to-br from-eco-900/20 via-transparent to-egg-900/10" />
 
       <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
         <motion.div
@@ -290,10 +261,7 @@ function MechanismSection() {
                     <p className="text-sm text-white/40">{s.desc}</p>
                   </div>
                   {step === i && (
-                    <motion.div
-                      layoutId="activeIndicator"
-                      className="ml-auto w-3 h-3 bg-eco-400 rounded-full"
-                    />
+                    <div className="ml-auto w-3 h-3 bg-eco-400 rounded-full" />
                   )}
                 </motion.div>
               ))}
@@ -301,20 +269,17 @@ function MechanismSection() {
 
             {/* Animation area */}
             <div className="flex-1 relative h-80 md:h-96 flex items-center justify-center">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={step}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.5 }}
-                  className="text-center"
-                >
-                  <div className="text-8xl mb-4">{steps[step].icon}</div>
-                  <h3 className="text-2xl font-bold text-eco-300 mb-2">{steps[step].title}</h3>
-                  <p className="text-white/60">{steps[step].desc}</p>
-                </motion.div>
-              </AnimatePresence>
+              <motion.div
+                key={step}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="text-center"
+              >
+                <div className="text-8xl mb-4">{steps[step].icon}</div>
+                <h3 className="text-2xl font-bold text-eco-300 mb-2">{steps[step].title}</h3>
+                <p className="text-white/60">{steps[step].desc}</p>
+              </motion.div>
 
               {/* Progress dots */}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
@@ -342,6 +307,7 @@ function TrayDemoSection() {
   const [processedCount, setProcessedCount] = useState(0);
 
   const handleInsert = () => {
+    if (isProcessing) return;
     setIsProcessing(true);
     const newSlots = [...traySlots];
     let idx = 0;
