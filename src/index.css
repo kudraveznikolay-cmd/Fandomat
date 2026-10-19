@@ -1,28 +1,5 @@
 @import "tailwindcss";
 
-@theme {
-  --color-eco-50: #f0fdf4;
-  --color-eco-100: #dcfce7;
-  --color-eco-200: #bbf7d0;
-  --color-eco-300: #86efac;
-  --color-eco-400: #4ade80;
-  --color-eco-500: #22c55e;
-  --color-eco-600: #16a34a;
-  --color-eco-700: #15803d;
-  --color-eco-800: #166534;
-  --color-eco-900: #14532d;
-  --color-egg-50: #fefce8;
-  --color-egg-100: #fef9c3;
-  --color-egg-200: #fef08a;
-  --color-egg-300: #fde047;
-  --color-egg-400: #facc15;
-  --color-egg-500: #eab308;
-  --color-egg-600: #ca8a04;
-  --color-egg-700: #a16207;
-  --color-egg-800: #854d0e;
-  --color-egg-900: #713f12;
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -43,26 +20,12 @@ body {
   50% { box-shadow: 0 0 40px rgba(34, 197, 94, 0.6); }
 }
 
-@keyframes conveyor {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-@keyframes count-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
 
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
-}
-
-.animate-conveyor {
-  animation: conveyor 3s linear infinite;
 }
 
 .glass-card {
@@ -80,10 +43,6 @@ body {
 
 .hero-gradient {
   background: radial-gradient(ellipse at center, rgba(34, 197, 94, 0.15) 0%, transparent 70%);
-}
-
-.section-gradient {
-  background: linear-gradient(180deg, #0a0f1a 0%, #0f1729 50%, #0a0f1a 100%);
 }
 
 ::-webkit-scrollbar {
