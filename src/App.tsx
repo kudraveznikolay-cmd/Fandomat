@@ -40,7 +40,68 @@ const steps = [
   { title: 'Начисление бонусов', desc: 'Покупатель получает бонусные баллы на карту лояльности магазина', icon: '🎁' },
 ];
 
+// ============ STYLES ============
+const styles = {
+  container: {
+    maxWidth: '1200px',
+    margin: '0 auto',
+    padding: '0 20px',
+  } as React.CSSProperties,
+  glass: {
+    background: 'rgba(255, 255, 255, 0.05)',
+    backdropFilter: 'blur(20px)',
+    border: '1px solid rgba(255, 255, 255, 0.1)',
+    borderRadius: '24px',
+    padding: '32px',
+  } as React.CSSProperties,
+  section: {
+    padding: '80px 0',
+  } as React.CSSProperties,
+  gradientText: {
+    background: 'linear-gradient(135deg, #4ade80, #22c55e, #fde047)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    backgroundClip: 'text',
+  } as React.CSSProperties,
+  flexCenter: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  } as React.CSSProperties,
+  grid2: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+    gap: '24px',
+  } as React.CSSProperties,
+  grid3: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+    gap: '24px',
+  } as React.CSSProperties,
+  grid4: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+    gap: '24px',
+  } as React.CSSProperties,
+};
+
 // ============ COMPONENTS ============
+
+function App() {
+  return (
+    <div style={{ background: '#0a0f1a', color: '#e2e8f0', minHeight: '100vh' }}>
+      <Navigation />
+      <HeroSection />
+      <ProblemSection />
+      <MechanismSection />
+      <TrayDemoSection />
+      <StatisticsSection />
+      <EcoImpactSection />
+      <ResultsSection />
+      <Footer />
+    </div>
+  );
+}
 
 function Navigation() {
   const [scrolled, setScrolled] = useState(false);
@@ -52,19 +113,30 @@ function Navigation() {
   }, []);
 
   return (
-    <nav className={scrolled ? 'scrolled' : ''}>
-      <div className="container">
-        <div className="flex gap-3" style={{ alignItems: 'center' }}>
-          <div style={{ width: 32, height: 32, background: '#22c55e', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <span style={{ fontSize: 20 }}>♻️</span>
+    <nav style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      zIndex: 100,
+      padding: '16px 0',
+      background: scrolled ? 'rgba(10, 15, 26, 0.9)' : 'transparent',
+      backdropFilter: scrolled ? 'blur(20px)' : 'none',
+      borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
+      transition: 'all 0.3s',
+    }}>
+      <div style={{ ...styles.container, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{ width: 32, height: 32, background: '#22c55e', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20 }}>
+            ♻️
           </div>
-          <span className="font-bold text-white">ЭкоЛоток</span>
+          <span style={{ fontWeight: 700, color: 'white' }}>ЭкоЛоток</span>
         </div>
-        <div className="nav-links">
-          <a href="#mechanism">Механизм</a>
-          <a href="#demo">Демонстрация</a>
-          <a href="#stats">Статистика</a>
-          <a href="#results">Результаты</a>
+        <div style={{ display: 'flex', gap: '24px' }}>
+          <a href="#mechanism" style={{ color: 'rgba(255,255,255,0.6)', textDecoration: 'none', fontSize: '0.875rem' }}>Механизм</a>
+          <a href="#demo" style={{ color: 'rgba(255,255,255,0.6)', textDecoration: 'none', fontSize: '0.875rem' }}>Демонстрация</a>
+          <a href="#stats" style={{ color: 'rgba(255,255,255,0.6)', textDecoration: 'none', fontSize: '0.875rem' }}>Статистика</a>
+          <a href="#results" style={{ color: 'rgba(255,255,255,0.6)', textDecoration: 'none', fontSize: '0.875rem' }}>Результаты</a>
         </div>
       </div>
     </nav>
@@ -86,42 +158,43 @@ function HeroSection() {
   }, []);
 
   return (
-    <section className="hero-bg" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
-      <div className="container text-center">
-        <div className="fade-in" style={{ animationDelay: '0s' }}>
-          <div className="badge glass mb-8">
+    <section style={{
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      position: 'relative',
+      background: 'radial-gradient(ellipse at center, rgba(34, 197, 94, 0.15) 0%, transparent 70%)',
+    }}>
+      <div style={{ ...styles.container, textAlign: 'center' }}>
+        <div style={{ marginBottom: 32 }}>
+          <div style={{ ...styles.glass, display: 'inline-flex', alignItems: 'center', gap: 8, padding: '8px 16px', borderRadius: 999, fontSize: '0.875rem' }}>
             <span>🏆</span>
-            <span className="text-green">Конкурс «100 идей Фандомата» • Республика Беларусь</span>
+            <span style={{ color: '#4ade80' }}>Конкурс «100 идей Фандомата» • Республика Беларусь</span>
           </div>
         </div>
 
-        <div className="fade-in" style={{ animationDelay: '0.2s' }}>
-          <h1>
-            <span className="gradient-text">ЭкоЛоток</span>
-            <br />
-            <span className="text-white" style={{ fontSize: 'clamp(1.5rem, 4vw, 3rem)' }}>
-              Фандомат для яичной упаковки
-            </span>
-          </h1>
-        </div>
+        <h1 style={{ fontSize: 'clamp(2.5rem, 8vw, 5rem)', fontWeight: 900, lineHeight: 1.1, marginBottom: 24 }}>
+          <span style={styles.gradientText}>ЭкоЛоток</span>
+          <br />
+          <span style={{ color: 'white', fontSize: 'clamp(1.5rem, 4vw, 3rem)' }}>
+            Фандомат для яичной упаковки
+          </span>
+        </h1>
 
-        <div className="fade-in" style={{ animationDelay: '0.4s' }}>
-          <p className="text-lg mb-12" style={{ maxWidth: 800, margin: '0 auto 48px' }}>
-            Инновационная система автоматизированного сбора и переработки яичной упаковки
-            в торговых сетях Беларуси. Вместе мы уже собрали более 43 000 единиц упаковки!
-          </p>
-        </div>
+        <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1.1rem', maxWidth: 800, margin: '0 auto 48px' }}>
+          Инновационная система автоматизированного сбора и переработки яичной упаковки
+          в торговых сетях Беларуси. Вместе мы уже собрали более 43 000 единиц упаковки!
+        </p>
 
-        <div className="fade-in flex flex-center flex-wrap gap-6 mb-12" style={{ animationDelay: '0.6s' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 24, marginBottom: 48 }}>
           <StatCard icon="📦" value={count.toLocaleString()} label="Собрано единиц" />
           <StatCard icon="🏪" value="28" label="Фандоматов" />
           <StatCard icon="📍" value="6" label="Торговых сетей РБ" />
           <StatCard icon="🌿" value="4.2т" label="Переработано" />
         </div>
 
-        <div className="bounce" style={{ animationDelay: '1.2s' }}>
-          <span style={{ fontSize: 32, color: '#4ade80' }}>↓</span>
-        </div>
+        <div style={{ fontSize: 32, color: '#4ade80', animation: 'bounce 2s infinite' }}>↓</div>
       </div>
     </section>
   );
@@ -129,11 +202,11 @@ function HeroSection() {
 
 function StatCard({ icon, value, label }: { icon: string; value: string; label: string }) {
   return (
-    <div className="glass" style={{ padding: '16px 24px', borderRadius: 16, display: 'flex', alignItems: 'center', gap: 12 }}>
+    <div style={{ ...styles.glass, padding: '16px 24px', borderRadius: 16, display: 'flex', alignItems: 'center', gap: 12 }}>
       <span style={{ fontSize: 24 }}>{icon}</span>
       <div>
-        <div className="text-2xl font-bold text-white">{value}</div>
-        <div className="text-sm text-muted">{label}</div>
+        <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'white' }}>{value}</div>
+        <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>{label}</div>
       </div>
     </div>
   );
@@ -141,28 +214,30 @@ function StatCard({ icon, value, label }: { icon: string; value: string; label: 
 
 function ProblemSection() {
   const problems = [
-    { icon: '🌍', title: '500 млн лотков/год', desc: 'Ежегодный объём яичной упаковки, попадающей на свалки в Беларуси', color: '#f87171' },
-    { icon: '⚡', title: '450 лет разложения', desc: 'Срок разложения пластикового яичного лотка в окружающей среде', color: '#fb923c' },
-    { icon: '👥', title: '82% не перерабатывается', desc: 'Доля яичной упаковки, которая не попадает в переработку в РБ', color: '#facc15' },
+    { icon: '🌍', title: '500 млн лотков/год', desc: 'Ежегодный объём яичной упаковки, попадающей на свалки в Беларуси' },
+    { icon: '⚡', title: '450 лет разложения', desc: 'Срок разложения пластикового яичного лотка в окружающей среде' },
+    { icon: '👥', title: '82% не перерабатывается', desc: 'Доля яичной упаковки, которая не попадает в переработку в РБ' },
   ];
 
   return (
-    <section className="py-24">
-      <div className="container">
-        <div className="text-center mb-16">
-          <h2><span className="gradient-text">Проблема</span></h2>
-          <p className="text-lg" style={{ maxWidth: 700, margin: '0 auto' }}>
+    <section style={styles.section}>
+      <div style={styles.container}>
+        <div style={{ textAlign: 'center', marginBottom: 64 }}>
+          <h2 style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', fontWeight: 800, marginBottom: 16 }}>
+            <span style={styles.gradientText}>Проблема</span>
+          </h2>
+          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1.1rem', maxWidth: 700, margin: '0 auto' }}>
             Ежегодно в Беларуси выбрасывается более 500 миллионов яичных лотков.
             Большинство из них попадают на свалки, загрязняя окружающую среду.
           </p>
         </div>
 
-        <div className="grid grid-3">
+        <div style={styles.grid3}>
           {problems.map((item, i) => (
-            <div key={i} className="glass text-center fade-in" style={{ animationDelay: `${i * 0.2}s` }}>
+            <div key={i} style={{ ...styles.glass, textAlign: 'center' }}>
               <div style={{ fontSize: 48, marginBottom: 16 }}>{item.icon}</div>
-              <h3 className="text-white">{item.title}</h3>
-              <p>{item.desc}</p>
+              <h3 style={{ color: 'white', fontSize: '1.5rem', fontWeight: 700, marginBottom: 12 }}>{item.title}</h3>
+              <p style={{ color: 'rgba(255,255,255,0.6)' }}>{item.desc}</p>
             </div>
           ))}
         </div>
@@ -182,28 +257,51 @@ function MechanismSection() {
   }, []);
 
   return (
-    <section id="mechanism" className="py-24">
-      <div className="container">
-        <div className="text-center mb-16">
-          <h2><span className="gradient-text">Как это работает</span></h2>
-          <p className="text-lg" style={{ maxWidth: 700, margin: '0 auto' }}>
+    <section id="mechanism" style={styles.section}>
+      <div style={styles.container}>
+        <div style={{ textAlign: 'center', marginBottom: 64 }}>
+          <h2 style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', fontWeight: 800, marginBottom: 16 }}>
+            <span style={styles.gradientText}>Как это работает</span>
+          </h2>
+          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1.1rem', maxWidth: 700, margin: '0 auto' }}>
             Простой и удобный процесс сбора яичной упаковки в 5 шагов
           </p>
         </div>
 
-        <div className="glass">
-          <div className="grid grid-2">
+        <div style={styles.glass}>
+          <div style={styles.grid2}>
             <div>
               {steps.map((s, i) => (
                 <div
                   key={i}
-                  className={`step ${step === i ? 'active' : ''}`}
                   onClick={() => setStep(i)}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 16,
+                    padding: 16,
+                    borderRadius: 12,
+                    cursor: 'pointer',
+                    background: step === i ? 'rgba(34, 197, 94, 0.2)' : 'transparent',
+                    border: step === i ? '1px solid rgba(34, 197, 94, 0.5)' : '1px solid transparent',
+                    marginBottom: 12,
+                  }}
                 >
-                  <div className="step-icon">{s.icon}</div>
+                  <div style={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: 24,
+                    background: step === i ? '#22c55e' : 'rgba(255,255,255,0.1)',
+                  }}>
+                    {s.icon}
+                  </div>
                   <div style={{ flex: 1 }}>
-                    <h4 className="text-white" style={{ fontSize: '1rem', fontWeight: 600, marginBottom: 4 }}>{s.title}</h4>
-                    <p className="text-sm text-muted">{s.desc}</p>
+                    <h4 style={{ color: step === i ? '#4ade80' : 'rgba(255,255,255,0.7)', fontSize: '1rem', fontWeight: 600, marginBottom: 4 }}>{s.title}</h4>
+                    <p style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.4)' }}>{s.desc}</p>
                   </div>
                   {step === i && (
                     <div style={{ width: 12, height: 12, background: '#4ade80', borderRadius: '50%' }} />
@@ -212,11 +310,11 @@ function MechanismSection() {
               ))}
             </div>
 
-            <div className="flex-center" style={{ minHeight: 300 }}>
-              <div className="text-center">
+            <div style={{ ...styles.flexCenter, minHeight: 300 }}>
+              <div style={{ textAlign: 'center' }}>
                 <div style={{ fontSize: 96, marginBottom: 16 }}>{steps[step].icon}</div>
-                <h3 className="text-green">{steps[step].title}</h3>
-                <p>{steps[step].desc}</p>
+                <h3 style={{ color: '#4ade80', fontSize: '1.5rem', fontWeight: 700, marginBottom: 12 }}>{steps[step].title}</h3>
+                <p style={{ color: 'rgba(255,255,255,0.6)' }}>{steps[step].desc}</p>
               </div>
             </div>
           </div>
@@ -253,38 +351,56 @@ function TrayDemoSection() {
   };
 
   return (
-    <section id="demo" className="py-24">
-      <div className="container">
-        <div className="text-center mb-16">
-          <h2><span className="gradient-text">Демонстрация работы лотка</span></h2>
-          <p className="text-lg" style={{ maxWidth: 700, margin: '0 auto' }}>
+    <section id="demo" style={styles.section}>
+      <div style={styles.container}>
+        <div style={{ textAlign: 'center', marginBottom: 64 }}>
+          <h2 style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', fontWeight: 800, marginBottom: 16 }}>
+            <span style={styles.gradientText}>Демонстрация работы лотка</span>
+          </h2>
+          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1.1rem', maxWidth: 700, margin: '0 auto' }}>
             Интерактивная модель: нажмите кнопку, чтобы увидеть процесс приёма и обработки лотка
           </p>
         </div>
 
-        <div className="grid grid-2">
-          <div className="glass">
-            <h3 className="text-white text-center mb-6">Яичный лоток (10 яиц)</h3>
-            <div className="tray-grid">
+        <div style={styles.grid2}>
+          <div style={styles.glass}>
+            <h3 style={{ color: 'white', fontSize: '1.5rem', fontWeight: 700, textAlign: 'center', marginBottom: 24 }}>Яичный лоток (10 яиц)</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 12, marginBottom: 32 }}>
               {traySlots.map((filled, i) => (
-                <div key={i} className={`tray-slot ${filled ? 'filled' : ''}`} />
+                <div key={i} style={{
+                  aspectRatio: '1',
+                  borderRadius: '50%',
+                  border: '2px solid rgba(255,255,255,0.2)',
+                  background: filled ? '#22c55e' : 'transparent',
+                  transition: 'all 0.3s',
+                }} />
               ))}
             </div>
             <button
               onClick={handleInsert}
               disabled={isProcessing}
-              className="btn btn-primary"
-              style={{ width: '100%' }}
+              style={{
+                width: '100%',
+                padding: 16,
+                borderRadius: 12,
+                fontWeight: 700,
+                fontSize: 18,
+                border: 'none',
+                cursor: isProcessing ? 'not-allowed' : 'pointer',
+                background: isProcessing ? 'rgba(255,255,255,0.1)' : '#22c55e',
+                color: isProcessing ? 'rgba(255,255,255,0.5)' : 'white',
+                transition: 'all 0.3s',
+              }}
             >
               {isProcessing ? '⚙️ Обработка...' : '🥚 Вставить лоток'}
             </button>
           </div>
 
-          <div className="glass">
-            <h3 className="text-white text-center mb-6">Статистика обработки</h3>
-            <div className="text-center mb-6">
-              <div className="text-5xl font-black text-green mb-2">{processedCount}</div>
-              <div className="text-muted">Лотков обработано</div>
+          <div style={styles.glass}>
+            <h3 style={{ color: 'white', fontSize: '1.5rem', fontWeight: 700, textAlign: 'center', marginBottom: 24 }}>Статистика обработки</h3>
+            <div style={{ textAlign: 'center', marginBottom: 24 }}>
+              <div style={{ fontSize: '3rem', fontWeight: 900, color: '#4ade80', marginBottom: 8 }}>{processedCount}</div>
+              <div style={{ color: 'rgba(255,255,255,0.5)' }}>Лотков обработано</div>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -294,12 +410,12 @@ function TrayDemoSection() {
               <ProcessBar label="Начисление бонусов" progress={isProcessing ? 100 : 0} />
             </div>
 
-            <div className="mt-6" style={{ padding: 16, borderRadius: 12, background: 'rgba(34, 197, 94, 0.1)', border: '1px solid rgba(34, 197, 94, 0.2)' }}>
-              <div className="flex gap-3 text-green mb-2" style={{ alignItems: 'center' }}>
+            <div style={{ marginTop: 24, padding: 16, borderRadius: 12, background: 'rgba(34, 197, 94, 0.1)', border: '1px solid rgba(34, 197, 94, 0.2)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#4ade80', marginBottom: 8 }}>
                 <span>✓</span>
-                <span className="font-bold">Бонусы начислены!</span>
+                <span style={{ fontWeight: 700 }}>Бонусы начислены!</span>
               </div>
-              <p className="text-sm text-muted">+{processedCount * 5} баллов на карту лояльности</p>
+              <p style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.5)' }}>+{processedCount * 5} баллов на карту лояльности</p>
             </div>
           </div>
         </div>
@@ -311,12 +427,12 @@ function TrayDemoSection() {
 function ProcessBar({ label, progress }: { label: string; progress: number }) {
   return (
     <div>
-      <div className="flex" style={{ justifyContent: 'space-between', marginBottom: 4 }}>
-        <span className="text-sm text-muted">{label}</span>
-        <span className="text-sm text-green">{progress > 0 ? '✓' : '—'}</span>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
+        <span style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.6)' }}>{label}</span>
+        <span style={{ fontSize: '0.875rem', color: '#4ade80' }}>{progress > 0 ? '✓' : '—'}</span>
       </div>
-      <div className="progress-bar">
-        <div className="progress-fill" style={{ width: `${progress}%` }} />
+      <div style={{ height: 12, background: 'rgba(255,255,255,0.1)', borderRadius: 999, overflow: 'hidden' }}>
+        <div style={{ height: '100%', width: `${progress}%`, background: 'linear-gradient(90deg, #16a34a, #4ade80)', borderRadius: 999, transition: 'width 0.8s' }} />
       </div>
     </div>
   );
@@ -326,102 +442,103 @@ function StatisticsSection() {
   const maxCollected = Math.max(...monthlyData.map(d => d.collected));
 
   return (
-    <section id="stats" className="py-24">
-      <div className="container">
-        <div className="text-center mb-16">
-          <h2><span className="gradient-text">Статистика по магазинам</span></h2>
-          <p className="text-lg" style={{ maxWidth: 700, margin: '0 auto' }}>
+    <section id="stats" style={styles.section}>
+      <div style={styles.container}>
+        <div style={{ textAlign: 'center', marginBottom: 64 }}>
+          <h2 style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', fontWeight: 800, marginBottom: 16 }}>
+            <span style={styles.gradientText}>Статистика по магазинам</span>
+          </h2>
+          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1.1rem', maxWidth: 700, margin: '0 auto' }}>
             Реальные данные сбора яичной упаковки в торговых сетях Беларуси
           </p>
         </div>
 
-        <div className="grid grid-3 mb-12">
+        <div style={{ ...styles.grid3, marginBottom: 48 }}>
           {storesData.map((store, i) => (
-            <div key={store.name} className="glass fade-in" style={{ animationDelay: `${i * 0.1}s` }}>
-              <div className="flex" style={{ justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-                <h4 className="text-white" style={{ fontSize: '1.1rem' }}>{store.name}</h4>
-                <span className="badge" style={{ background: 'rgba(34, 197, 94, 0.2)', color: '#4ade80', fontSize: '0.75rem' }}>
+            <div key={store.name} style={{ ...styles.glass, padding: 24 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+                <h4 style={{ color: 'white', fontSize: '1.1rem', fontWeight: 700 }}>{store.name}</h4>
+                <span style={{ fontSize: '0.75rem', padding: '4px 8px', borderRadius: 999, background: 'rgba(34, 197, 94, 0.2)', color: '#4ade80' }}>
                   {store.machines} фандоматов
                 </span>
               </div>
-              <div className="mb-3">
-                <div className="flex" style={{ justifyContent: 'space-between', marginBottom: 4 }}>
-                  <span className="text-sm text-muted">Собрано</span>
-                  <span className="text-sm font-bold text-green">{store.collected.toLocaleString()}</span>
+              <div style={{ marginBottom: 12 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
+                  <span style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.5)' }}>Собрано</span>
+                  <span style={{ fontSize: '0.875rem', fontWeight: 700, color: '#4ade80' }}>{store.collected.toLocaleString()}</span>
                 </div>
-                <div className="progress-bar">
-                  <div className="progress-fill" style={{ width: `${(store.collected / store.target) * 100}%` }} />
+                <div style={{ height: 12, background: 'rgba(255,255,255,0.1)', borderRadius: 999, overflow: 'hidden' }}>
+                  <div style={{ height: '100%', width: `${(store.collected / store.target) * 100}%`, background: 'linear-gradient(90deg, #16a34a, #4ade80)', borderRadius: 999 }} />
                 </div>
                 <div style={{ textAlign: 'right', fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', marginTop: 4 }}>
                   Цель: {store.target.toLocaleString()}
                 </div>
               </div>
-              <div className="flex gap-3" style={{ alignItems: 'center' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                 <span style={{ color: '#4ade80' }}>📈</span>
-                <span className="text-sm text-green">{Math.round((store.collected / store.target) * 100)}% от плана</span>
+                <span style={{ fontSize: '0.875rem', color: '#4ade80' }}>{Math.round((store.collected / store.target) * 100)}% от плана</span>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="grid grid-2">
-          <div className="glass">
-            <h3 className="text-white mb-4 flex gap-3" style={{ alignItems: 'center' }}>
+        <div style={styles.grid2}>
+          <div style={styles.glass}>
+            <h3 style={{ color: 'white', fontSize: '1.25rem', fontWeight: 700, marginBottom: 16, display: 'flex', alignItems: 'center', gap: 12 }}>
               <span>📊</span> Динамика сбора за год
             </h3>
             <div style={{ display: 'flex', alignItems: 'flex-end', gap: 8, height: 250, padding: '20px 0' }}>
               {monthlyData.map((d, i) => (
                 <div key={i} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
-                  <div
-                    style={{
-                      width: '100%',
-                      height: `${(d.collected / maxCollected) * 200}px`,
-                      background: 'linear-gradient(180deg, #4ade80, #22c55e)',
-                      borderRadius: '4px 4px 0 0',
-                      transition: 'height 0.5s',
-                    }}
-                  />
+                  <div style={{
+                    width: '100%',
+                    height: `${(d.collected / maxCollected) * 200}px`,
+                    background: 'linear-gradient(180deg, #4ade80, #22c55e)',
+                    borderRadius: '4px 4px 0 0',
+                  }} />
                   <span style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.5)' }}>{d.month}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="glass">
-            <h3 className="text-white mb-4 flex gap-3" style={{ alignItems: 'center' }}>
+          <div style={styles.glass}>
+            <h3 style={{ color: 'white', fontSize: '1.25rem', fontWeight: 700, marginBottom: 16, display: 'flex', alignItems: 'center', gap: 12 }}>
               <span>♻️</span> Типы собранной упаковки
             </h3>
-            <div className="flex-center" style={{ minHeight: 250 }}>
+            <div style={{ ...styles.flexCenter, minHeight: 250 }}>
               <div style={{ position: 'relative', width: 200, height: 200 }}>
                 <svg viewBox="0 0 100 100" style={{ transform: 'rotate(-90deg)' }}>
-                  {pieData.reduce<{ elements: any[]; offset: number }>((acc, item, i) => {
+                  {(() => {
                     const circumference = 2 * Math.PI * 40;
-                    const strokeLength = (item.value / 100) * circumference;
-                    const element = (
-                      <circle
-                        key={i}
-                        cx="50"
-                        cy="50"
-                        r="40"
-                        fill="none"
-                        stroke={item.color}
-                        strokeWidth="20"
-                        strokeDasharray={`${strokeLength} ${circumference}`}
-                        strokeDashoffset={-acc.offset}
-                      />
-                    );
-                    acc.elements.push(element);
-                    acc.offset += strokeLength;
-                    return acc;
-                  }, { elements: [], offset: 0 }).elements}
+                    let offset = 0;
+                    return pieData.map((item, i) => {
+                      const strokeLength = (item.value / 100) * circumference;
+                      const element = (
+                        <circle
+                          key={i}
+                          cx="50"
+                          cy="50"
+                          r="40"
+                          fill="none"
+                          stroke={item.color}
+                          strokeWidth="20"
+                          strokeDasharray={`${strokeLength} ${circumference}`}
+                          strokeDashoffset={-offset}
+                        />
+                      );
+                      offset += strokeLength;
+                      return element;
+                    });
+                  })()}
                 </svg>
               </div>
             </div>
-            <div className="grid" style={{ gridTemplateColumns: '1fr 1fr', gap: 8, marginTop: 16 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, marginTop: 16 }}>
               {pieData.map((item) => (
-                <div key={item.name} className="flex gap-3" style={{ alignItems: 'center' }}>
+                <div key={item.name} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                   <div style={{ width: 12, height: 12, borderRadius: '50%', background: item.color }} />
-                  <span className="text-sm text-muted">{item.name} ({item.value}%)</span>
+                  <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.6)' }}>{item.name} ({item.value}%)</span>
                 </div>
               ))}
             </div>
@@ -449,50 +566,52 @@ function EcoImpactSection() {
   ];
 
   return (
-    <section className="py-24" style={{ background: 'linear-gradient(180deg, rgba(20, 83, 45, 0.2), transparent)' }}>
-      <div className="container">
-        <div className="text-center mb-16">
-          <h2><span className="gradient-text">Экологический эффект</span></h2>
-          <p className="text-lg" style={{ maxWidth: 700, margin: '0 auto' }}>
+    <section style={{ ...styles.section, background: 'linear-gradient(180deg, rgba(20, 83, 45, 0.2), transparent)' }}>
+      <div style={styles.container}>
+        <div style={{ textAlign: 'center', marginBottom: 64 }}>
+          <h2 style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', fontWeight: 800, marginBottom: 16 }}>
+            <span style={styles.gradientText}>Экологический эффект</span>
+          </h2>
+          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1.1rem', maxWidth: 700, margin: '0 auto' }}>
             Каждая собранная яичная упаковка — это вклад в чистое будущее нашей планеты
           </p>
         </div>
 
-        <div className="grid grid-2">
-          <div className="glass">
-            <h3 className="text-white mb-6 flex gap-3" style={{ alignItems: 'center' }}>
+        <div style={styles.grid2}>
+          <div style={styles.glass}>
+            <h3 style={{ color: 'white', fontSize: '1.25rem', fontWeight: 700, marginBottom: 24, display: 'flex', alignItems: 'center', gap: 12 }}>
               <span>🌿</span> Вклад в экологию
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
               {ecoStats.map((item, i) => (
                 <div key={i}>
-                  <div className="flex" style={{ justifyContent: 'space-between', marginBottom: 8 }}>
-                    <span className="text-sm text-muted">{item.label}</span>
-                    <span className="text-sm font-bold text-green">{item.value}</span>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
+                    <span style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.7)' }}>{item.label}</span>
+                    <span style={{ fontSize: '0.875rem', fontWeight: 700, color: '#4ade80' }}>{item.value}</span>
                   </div>
-                  <div className="progress-bar">
-                    <div className="progress-fill" style={{ width: `${item.percent}%` }} />
+                  <div style={{ height: 12, background: 'rgba(255,255,255,0.1)', borderRadius: 999, overflow: 'hidden' }}>
+                    <div style={{ height: '100%', width: `${item.percent}%`, background: 'linear-gradient(90deg, #16a34a, #4ade80)', borderRadius: 999 }} />
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="glass">
-            <h3 className="text-white mb-6 flex gap-3" style={{ alignItems: 'center' }}>
+          <div style={styles.glass}>
+            <h3 style={{ color: 'white', fontSize: '1.25rem', fontWeight: 700, marginBottom: 24, display: 'flex', alignItems: 'center', gap: 12 }}>
               <span>♻️</span> Цикл переработки
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               {recycleSteps.map((item, i) => (
-                <div key={i} className="flex gap-4 p-4" style={{ alignItems: 'center', borderRadius: 12, background: 'rgba(255,255,255,0.05)' }}>
+                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 16, padding: 16, borderRadius: 12, background: 'rgba(255,255,255,0.05)' }}>
                   <div style={{ width: 40, height: 40, borderRadius: '50%', background: 'rgba(34, 197, 94, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20 }}>
                     {item.emoji}
                   </div>
                   <div style={{ flex: 1 }}>
-                    <div className="text-white" style={{ fontSize: '0.9rem', fontWeight: 600 }}>{item.title}</div>
-                    <div className="text-sm text-muted">{item.desc}</div>
+                    <div style={{ color: 'white', fontSize: '0.9rem', fontWeight: 600 }}>{item.title}</div>
+                    <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>{item.desc}</div>
                   </div>
-                  <div className="text-green font-bold text-sm">#{item.step}</div>
+                  <div style={{ color: '#4ade80', fontWeight: 700, fontSize: '0.875rem' }}>#{item.step}</div>
                 </div>
               ))}
             </div>
@@ -518,32 +637,34 @@ function ResultsSection() {
   ];
 
   return (
-    <section id="results" className="py-24">
-      <div className="container">
-        <div className="text-center mb-16">
-          <h2><span className="gradient-text">Наши результаты</span></h2>
-          <p className="text-lg" style={{ maxWidth: 700, margin: '0 auto' }}>
+    <section id="results" style={styles.section}>
+      <div style={styles.container}>
+        <div style={{ textAlign: 'center', marginBottom: 64 }}>
+          <h2 style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', fontWeight: 800, marginBottom: 16 }}>
+            <span style={styles.gradientText}>Наши результаты</span>
+          </h2>
+          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1.1rem', maxWidth: 700, margin: '0 auto' }}>
             За 12 месяцев работы проекта мы достигли значительных результатов
           </p>
         </div>
 
-        <div className="grid grid-4 mb-16">
+        <div style={{ ...styles.grid4, marginBottom: 64 }}>
           {results.map((r, i) => (
-            <div key={i} className="glass text-center fade-in" style={{ animationDelay: `${i * 0.15}s` }}>
+            <div key={i} style={{ ...styles.glass, textAlign: 'center' }}>
               <div style={{ fontSize: 32, marginBottom: 16 }}>{r.icon}</div>
-              <div className="text-3xl font-black text-white mb-2">{r.value}</div>
-              <div className="text-sm text-muted">{r.label}</div>
+              <div style={{ fontSize: '1.875rem', fontWeight: 900, color: 'white', marginBottom: 8 }}>{r.value}</div>
+              <div style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.5)' }}>{r.label}</div>
             </div>
           ))}
         </div>
 
-        <div className="glass text-center">
-          <h3 className="text-white mb-6" style={{ fontSize: '1.8rem' }}>Планы развития</h3>
-          <div className="grid grid-3">
+        <div style={{ ...styles.glass, textAlign: 'center' }}>
+          <h3 style={{ color: 'white', fontSize: '1.8rem', fontWeight: 700, marginBottom: 24 }}>Планы развития</h3>
+          <div style={styles.grid3}>
             {plans.map((item, i) => (
               <div key={i} style={{ padding: 16, borderRadius: 12, background: 'rgba(255,255,255,0.05)' }}>
-                <div className="text-green font-bold text-xl mb-2">{item.year}</div>
-                <p className="text-sm text-muted">{item.plan}</p>
+                <div style={{ color: '#4ade80', fontWeight: 700, fontSize: '1.25rem', marginBottom: 8 }}>{item.year}</div>
+                <p style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.6)' }}>{item.plan}</p>
               </div>
             ))}
           </div>
@@ -555,35 +676,21 @@ function ResultsSection() {
 
 function Footer() {
   return (
-    <footer>
-      <div className="container">
-        <div className="flex-center gap-3 mb-4">
-          <div style={{ width: 40, height: 40, background: '#22c55e', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <span style={{ fontSize: 24 }}>♻️</span>
+    <footer style={{ padding: '48px 0', borderTop: '1px solid rgba(255,255,255,0.1)', textAlign: 'center' }}>
+      <div style={styles.container}>
+        <div style={{ ...styles.flexCenter, gap: 12, marginBottom: 16 }}>
+          <div style={{ width: 40, height: 40, background: '#22c55e', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 24 }}>
+            ♻️
           </div>
-          <span className="text-xl font-bold gradient-text">ЭкоЛоток</span>
+          <span style={{ fontSize: '1.25rem', fontWeight: 700, ...styles.gradientText }}>ЭкоЛоток</span>
         </div>
-        <p className="text-sm text-muted mb-4">
+        <p style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.4)', marginBottom: 16 }}>
           Проект для конкурса «100 идей Фандомата» • Республика Беларусь • Сбор и переработка яичной упаковки
         </p>
-        <p className="text-sm" style={{ color: 'rgba(255,255,255,0.3)' }}>© 2024-2025 ЭкоЛоток • Беларусь</p>
+        <p style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.3)' }}>© 2024-2025 ЭкоЛоток • Беларусь</p>
       </div>
     </footer>
   );
 }
 
-export default function App() {
-  return (
-    <div>
-      <Navigation />
-      <HeroSection />
-      <ProblemSection />
-      <MechanismSection />
-      <TrayDemoSection />
-      <StatisticsSection />
-      <EcoImpactSection />
-      <ResultsSection />
-      <Footer />
-    </div>
-  );
-}
+export default App;
