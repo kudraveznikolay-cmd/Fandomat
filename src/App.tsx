@@ -394,7 +394,7 @@ function StatisticsSection() {
             <div className="flex-center" style={{ minHeight: 250 }}>
               <div style={{ position: 'relative', width: 200, height: 200 }}>
                 <svg viewBox="0 0 100 100" style={{ transform: 'rotate(-90deg)' }}>
-                  {pieData.reduce<{ elements: JSX.Element[]; offset: number }>((acc, item, i) => {
+                  {pieData.reduce<{ elements: any[]; offset: number }>((acc, item, i) => {
                     const circumference = 2 * Math.PI * 40;
                     const strokeLength = (item.value / 100) * circumference;
                     const element = (
